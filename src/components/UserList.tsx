@@ -4,19 +4,18 @@ import {useTypedSelector} from "../hooks/useTypedSelector";
 import {fetchUsers} from "../store/action-creators/user";
 import {useAction} from "../hooks/useAction";
 
-
 export const UserList: React.FC = () => {
     const {users, error, loading} = useTypedSelector(state => state.user);
     const {fetchUsers} = useAction();
 
-    useEffect(()=> {
+    useEffect(() => {
         fetchUsers();
     }, []);
 
-    if(loading){
+    if (loading) {
         return <h1>Loading...</h1>
     }
-    if(error){
+    if (error) {
         return <h1>{error}</h1>
     }
     return (
